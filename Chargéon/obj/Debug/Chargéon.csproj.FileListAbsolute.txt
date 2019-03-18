@@ -1,0 +1,10 @@
+C:\Users\User\source\repos\Chargéon\Chargéon\bin\Debug\Chargéon.exe.config
+C:\Users\User\source\repos\Chargéon\Chargéon\bin\Debug\Chargéon.exe
+C:\Users\User\source\repos\Chargéon\Chargéon\bin\Debug\Chargéon.pdb
+C:\Users\User\source\repos\Chargéon\Chargéon\obj\Debug\Chargéon.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Chargéon\Chargéon\obj\Debug\Chargéon.Chargéon.resources
+C:\Users\User\source\repos\Chargéon\Chargéon\obj\Debug\Chargéon.Properties.Resources.resources
+C:\Users\User\source\repos\Chargéon\Chargéon\obj\Debug\Chargéon.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Chargéon\Chargéon\obj\Debug\Chargéon.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Chargéon\Chargéon\obj\Debug\Chargéon.exe
+C:\Users\User\source\repos\Chargéon\Chargéon\obj\Debug\Chargéon.pdb
