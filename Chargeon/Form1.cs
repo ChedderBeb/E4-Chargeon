@@ -8,13 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Chargéon
+
+namespace Chargeon
 {
-    public partial class Chargéon : Form
+    public partial class Form1 : Form
     {
-        public Chargéon()
+        public Form1()
         {
             InitializeComponent();
         }
+
+        
     }
 }

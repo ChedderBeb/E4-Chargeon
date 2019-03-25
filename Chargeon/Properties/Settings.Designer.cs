@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Chargéon.Properties
+namespace Chargeon.Properties
 {
 
 

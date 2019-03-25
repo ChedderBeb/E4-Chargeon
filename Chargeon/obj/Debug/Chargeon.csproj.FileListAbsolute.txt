@@ -1,0 +1,11 @@
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\bin\Debug\Chargeon.exe.config
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\bin\Debug\Chargeon.exe
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\bin\Debug\Chargeon.pdb
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\obj\Debug\Chargeon.csprojAssemblyReference.cache
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\obj\Debug\Chargeon.Form1.resources
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\obj\Debug\Chargeon.Properties.Resources.resources
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\obj\Debug\Chargeon.UserControlStat.resources
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\obj\Debug\Chargeon.csproj.GenerateResource.cache
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\obj\Debug\Chargeon.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\obj\Debug\Chargeon.exe
+C:\Users\User\source\repos\MainChargeon\Chargeon\Chargeon\obj\Debug\Chargeon.pdb
