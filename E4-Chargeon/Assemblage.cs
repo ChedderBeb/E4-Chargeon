@@ -10,7 +10,8 @@ namespace Chargeon
 	{
 		private MySqlConnection bdd = new MySqlConnection("SERVER= 127.0.0.1; DATABASE= chargeon; UID=root; PASSWORD= ;");
 		public MySqlConnection Bdd { get => bdd; }
-		public string MsgErr { get => MsgErr; set => MsgErr = value; }
+		string msgErr = "";
+		public string MsgErr { get => msgErr; set => msgErr = value; }
 		internal List<Technicien> Technicien { get => technicien; set => technicien = value; }
 
 		List<Technicien> technicien = new List<Technicien>();
@@ -39,13 +40,13 @@ namespace Chargeon
 			}
 			Bdd.Close();
 		}
-		public void InsertTechniciens(Technicien unNom, Technicien unPrenom, Technicien uneLong, Technicien uneLat)
+		public void InsertTechniciens(Technicien unTech)
 		{
 			Bdd.Open();
 			try
 			{
 
-				string query = "INSERT INTO technicien (techNom, techPrenom, techLong, techLat) VAlUES (" + unNom + ", " + unPrenom + ", " + uneLong + ", " + uneLat + ")";
+				string query = "INSERT INTO technicien (techNom, techPrenom, techLong, techLat) VAlUES (" + unTech.Nom + ", " + unTech.Prenom + ", " + unTech.Longi + ", " + unTech.Lat + ")";
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();

@@ -123,6 +123,7 @@
 			this.btnAjoutTech.TabIndex = 9;
 			this.btnAjoutTech.Text = "Ajouter";
 			this.btnAjoutTech.UseVisualStyleBackColor = true;
+			this.btnAjoutTech.Click += new System.EventHandler(this.btnAjoutTech_Click);
 			// 
 			// label4
 			// 
@@ -191,11 +192,11 @@
 			// lvTech
 			// 
 			this.lvTech.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.idTech,
-			this.nomTech,
-			this.prenomTech,
-			this.techLong,
-			this.techLat});
+            this.idTech,
+            this.nomTech,
+            this.prenomTech,
+            this.techLong,
+            this.techLat});
 			this.lvTech.FullRowSelect = true;
 			this.lvTech.Location = new System.Drawing.Point(7, 20);
 			this.lvTech.Name = "lvTech";
@@ -203,6 +204,7 @@
 			this.lvTech.TabIndex = 0;
 			this.lvTech.UseCompatibleStateImageBehavior = false;
 			this.lvTech.View = System.Windows.Forms.View.Details;
+			this.lvTech.SelectedIndexChanged += new System.EventHandler(this.lvTech_SelectedIndexChanged);
 			// 
 			// idTech
 			// 
@@ -265,9 +267,9 @@
 			// lvHab
 			// 
 			this.lvHab.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.idHab,
-			this.habNat,
-			this.habDom});
+            this.idHab,
+            this.habNat,
+            this.habDom});
 			this.lvHab.FullRowSelect = true;
 			this.lvHab.Location = new System.Drawing.Point(6, 20);
 			this.lvHab.Name = "lvHab";
@@ -392,10 +394,10 @@
 			// lvTechHab
 			// 
 			this.lvTechHab.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.idTechHab,
-			this.tech,
-			this.hab,
-			this.habValid});
+            this.idTechHab,
+            this.tech,
+            this.hab,
+            this.habValid});
 			this.lvTechHab.FullRowSelect = true;
 			this.lvTechHab.Location = new System.Drawing.Point(4, 19);
 			this.lvTechHab.Name = "lvTechHab";
@@ -442,14 +444,14 @@
 			this.btnAjoutHabTech.Text = "Ajouter";
 			this.btnAjoutHabTech.UseVisualStyleBackColor = true;
 			// 
-			// UserControlTechnicien
+			// UserControlTechniciens
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.gbTechHab);
 			this.Controls.Add(this.gbHab);
 			this.Controls.Add(this.gbTechnicien);
-			this.Name = "UserControlTechnicien";
+			this.Name = "UserControlTechniciens";
 			this.Size = new System.Drawing.Size(1046, 513);
 			this.gbTechnicien.ResumeLayout(false);
 			this.gbTechnicien.PerformLayout();

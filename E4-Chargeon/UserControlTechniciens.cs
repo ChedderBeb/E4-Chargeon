@@ -16,9 +16,12 @@ namespace E4_Chargeon
 		public UserControlTechniciens()
 		{
 			InitializeComponent();
+			majLvTech();
 		}
 
 		static Assemblage assemblage = new Assemblage();
+
+		//TECHNICIEN
 		public void majLvTech()
 		{
 			try
@@ -46,6 +49,39 @@ namespace E4_Chargeon
 			}catch (Exception expt)
 			{
 
+			}
+		}
+
+		private void lvTech_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(lvTech.SelectedItems.Count > 0)
+			{
+				tbNomTech.Text = lvTech.SelectedItems[0].SubItems[1].Text;
+				tbPrenomTech.Text = lvTech.SelectedItems[0].SubItems[2].Text;
+				tbLongTech.Text = lvTech.SelectedItems[0].SubItems[3].Text;
+				tbLatTech.Text = lvTech.SelectedItems[0].SubItems[4].Text;
+			}
+		}
+
+		private void btnAjoutTech_Click(object sender, EventArgs e)
+		{
+			if(tbNomTech.Text != "" && tbPrenomTech.Text != "" && tbLongTech.Text != "" && tbLatTech.Text != "")
+			{
+				float uneLong = float.Parse(tbLongTech.Text.ToString());
+				float uneLat = float.Parse(tbLatTech.Text.ToString());
+				string unNom = tbNomTech.ToString();
+				string unPrenom = tbPrenomTech.ToString();
+				Technicien unTech = new Technicien(0, unNom, unPrenom, uneLong, uneLat);
+				assemblage.InsertTechniciens(unTech);
+				if(assemblage.MsgErr == "")
+				{
+					MessageBox.Show(" L'insertion s'est bien déroulée !");
+
+				} else
+				{
+					MessageBox.Show(assemblage.MsgErr);
+					assemblage.MsgErr = "";
+				}
 			}
 		}
 	}

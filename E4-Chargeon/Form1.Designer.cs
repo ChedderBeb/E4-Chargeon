@@ -28,13 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+			this.userControlTechniciens1 = new E4_Chargeon.UserControlTechniciens();
+			this.SuspendLayout();
+			// 
+			// userControlTechniciens1
+			// 
+			this.userControlTechniciens1.Location = new System.Drawing.Point(12, 12);
+			this.userControlTechniciens1.Name = "userControlTechniciens1";
+			this.userControlTechniciens1.Size = new System.Drawing.Size(1046, 513);
+			this.userControlTechniciens1.TabIndex = 0;
+			// 
+			// Form1
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(1096, 583);
+			this.Controls.Add(this.userControlTechniciens1);
+			this.Name = "Form1";
+			this.Text = "Form1";
+			this.ResumeLayout(false);
+
         }
 
-        #endregion
-    }
+		#endregion
+
+		private UserControlTechniciens userControlTechniciens1;
+	}
 }
 
