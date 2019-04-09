@@ -15,12 +15,16 @@ namespace Chargeon
 		public Technicien(int unId, string unNom, string unPrenom, float uneLong, float uneLat)
 		{
 			this.id = unId;
-			this.nom = unNom;
-			this.prenom = unPrenom;
+			this.Nom = unNom;
+			this.Prenom = unPrenom;
 			this.longi = uneLong;
 			this.lat = uneLat;
 		}
 
 		public int Id { get => id; set => id = value; }
+		public string Nom { get => nom; set => nom = value; }
+		public string Prenom { get => prenom; set => prenom = value; }
+		public float Longi { get => longi; set => longi = value; }
+		public float Lat { get => lat; set => lat = value; }
 	}
 }

@@ -71,11 +71,11 @@
     <Compile Include="UserControlStat.designer.cs">
       <DependentUpon>UserControlStat.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlTechnicien.cs">
+    <Compile Include="UserControlTechniciens.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlTechnicien.designer.cs">
-      <DependentUpon>UserControlTechnicien.cs</DependentUpon>
+    <Compile Include="UserControlTechniciens.Designer.cs">
+      <DependentUpon>UserControlTechniciens.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -92,8 +92,8 @@
     <EmbeddedResource Include="UserControlStat.resx">
       <DependentUpon>UserControlStat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlTechnicien.resx">
-      <DependentUpon>UserControlTechnicien.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlTechniciens.resx">
+      <DependentUpon>UserControlTechniciens.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

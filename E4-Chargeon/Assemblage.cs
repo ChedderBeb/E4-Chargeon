@@ -9,8 +9,9 @@ namespace Chargeon
 	class Assemblage
 	{
 		private MySqlConnection bdd = new MySqlConnection("SERVER= 127.0.0.1; DATABASE= chargeon; UID=root; PASSWORD= ;");
-		string MsgErr = "";
 		public MySqlConnection Bdd { get => bdd; }
+		public string MsgErr { get => MsgErr; set => MsgErr = value; }
+		internal List<Technicien> Technicien { get => technicien; set => technicien = value; }
 
 		List<Technicien> technicien = new List<Technicien>();
 		Habilitation habilitation;
