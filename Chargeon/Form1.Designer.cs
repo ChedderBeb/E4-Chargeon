@@ -58,7 +58,6 @@
             // 
             // tabPageIntervention
             // 
-            this.tabPageIntervention.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageIntervention.Location = new System.Drawing.Point(4, 32);
             this.tabPageIntervention.Name = "tabPageIntervention";
             this.tabPageIntervention.Padding = new System.Windows.Forms.Padding(3);
