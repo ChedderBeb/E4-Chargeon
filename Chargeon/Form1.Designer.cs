@@ -35,6 +35,7 @@
             this.tabPageTechniciens = new System.Windows.Forms.TabPage();
             this.tabPageStat = new System.Windows.Forms.TabPage();
             this.userControlStat1 = new Chargeon.UserControlStat();
+            this.userControlStat2 = new Chargeon.UserControlStat();
             this.tabControlMain.SuspendLayout();
             this.tabPageStat.SuspendLayout();
             this.SuspendLayout();
@@ -96,7 +97,7 @@
             // 
             // tabPageStat
             // 
-            this.tabPageStat.Controls.Add(this.userControlStat1);
+            this.tabPageStat.Controls.Add(this.userControlStat2);
             this.tabPageStat.Location = new System.Drawing.Point(4, 32);
             this.tabPageStat.Name = "tabPageStat";
             this.tabPageStat.Size = new System.Drawing.Size(1268, 592);
@@ -106,11 +107,21 @@
             // 
             // userControlStat1
             // 
+            this.userControlStat1.BackColor = System.Drawing.Color.Peru;
             this.userControlStat1.Location = new System.Drawing.Point(-4, 4);
             this.userControlStat1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.userControlStat1.Name = "userControlStat1";
             this.userControlStat1.Size = new System.Drawing.Size(1269, 584);
             this.userControlStat1.TabIndex = 0;
+            // 
+            // userControlStat2
+            // 
+            this.userControlStat2.BackColor = System.Drawing.Color.Peru;
+            this.userControlStat2.Location = new System.Drawing.Point(-4, 0);
+            this.userControlStat2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.userControlStat2.Name = "userControlStat2";
+            this.userControlStat2.Size = new System.Drawing.Size(1244, 630);
+            this.userControlStat2.TabIndex = 0;
             // 
             // Form1
             // 
@@ -135,6 +146,7 @@
         private System.Windows.Forms.TabPage tabPageTechniciens;
         private System.Windows.Forms.TabPage tabPageStat;
         private UserControlStat userControlStat1;
+        private UserControlStat userControlStat2;
     }
 }
 
