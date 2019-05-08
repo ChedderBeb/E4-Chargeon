@@ -8,34 +8,31 @@ namespace Chargeon
 {
 	class Bornes
 	{
-		private int id, puissance, statId;
-		private string numSerie, type, refe;
+		private int id, numSerie, puissance;
+		private string type, reference;
 		private bool concu;
-		private float longe, lat;
+		private float longi, lat;
 
-		public Bornes(int unId, int unePuissance, int unStatId, string unNumSerie, string unType, string uneRef, bool uneConcu, float uneLong, float uneLat)
+		public Bornes(int unId, int unNum, int unePuissance, string unType, string uneRef,  float uneLat, float uneLong, bool uneConcu)
 		{
 			this.id = unId;
+			this.numSerie = unNum;
 			this.puissance = unePuissance;
-			this.statId = unStatId;
-			this.numSerie = unNumSerie;
 			this.type = unType;
-			this.refe = uneRef;
-			this.concu = uneConcu;
-			this.longe = uneLong;
+			this.reference = uneRef;
+			this.longi = uneLong;
 			this.lat = uneLat;
+			this.concu = uneConcu;
 
 		}
 
 		public int Id { get => id; set => id = value; }
+		public int NumSerie { get => numSerie; set => numSerie = value; }
 		public int Puissance { get => puissance; set => puissance = value; }
-		public int StatId { get => statId; set => statId = value; }
-		public string NumSerie { get => numSerie; set => numSerie = value; }
 		public string Type { get => type; set => type = value; }
-		public string Refe { get => refe; set => refe = value; }
+		public string Reference { get => reference; set => reference = value; }
 		public bool Concu { get => concu; set => concu = value; }
-		public float Long { get => longe; set => longe = value; }
+		public float Longi { get => longi; set => longi = value; }
 		public float Lat { get => lat; set => lat = value; }
-
 	}
 }

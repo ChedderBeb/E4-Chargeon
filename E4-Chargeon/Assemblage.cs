@@ -9,9 +9,10 @@ namespace Chargeon
 	class Assemblage
 	{
 		private MySqlConnection bdd = new MySqlConnection("SERVER= 127.0.0.1; DATABASE= chargeon; UID=root; PASSWORD= ;");
-		string MsgErr = "";
-		public MySqlConnection Bdd { get => bdd; }
+		string msgErr = "";
+		public MySqlConnection Bdd { get => bdd;}
 		internal List<Bornes> ListBornes { get => listBornes; set => listBornes = value; }
+		public string MsgErr { get => msgErr; set => msgErr = value; }
 
 		List<Bornes> listBornes = new List<Bornes>();
 
@@ -257,12 +258,18 @@ namespace Chargeon
 			Bdd.Open();
 			try
 			{
+				
 				string query = "SELECT * FROM borne";
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				MySqlDataReader bornes1 = cmd.ExecuteReader();
 				while (bornes1.Read())
 				{
-					this.listBornes.Add(new Bornes(Int32.Parse(bornes1["boId"].ToString()), Int32.Parse(bornes1["boPuissance"].ToString()), Int32.Parse(bornes1["boStatId"].ToString()), bornes1["boNumSerie"].ToString(), bornes1["boType"].ToString(), bornes1["boRef"].ToString(), false, float.Parse(bornes1["boLong"].ToString()), float.Parse(bornes1["boLat"].ToString())));
+					bool concu = false;
+					if (bornes1["boConcu"].ToString() != "False")
+					{
+						concu = true;
+					}
+					this.listBornes.Add(new Bornes(Int32.Parse(bornes1["boId"].ToString()), Int32.Parse(bornes1["boPuissance"].ToString()), Int32.Parse(bornes1["boNumSerie"].ToString()), bornes1["boType"].ToString(), bornes1["boRef"].ToString(), float.Parse(bornes1["boLong"].ToString()), float.Parse(bornes1["boLat"].ToString()), concu));
 				}
 				bornes1.Close();
 				Bdd.Close();
@@ -291,10 +298,37 @@ namespace Chargeon
 			Bdd.Close();
 			return puissance;
 		}
-
-
-
-
 		//--------------------------------------------------Fin Léo-------------------------------------------
+		//--------------------------------------------------Début Mathias-------------------------------------
+		public void SetBornes()
+		{
+			Bdd.Open();
+			listBornes = new List<Bornes>();
+			try
+			{
+				string query = "SELECT * FROM borne";
+				MySqlCommand cmd = new MySqlCommand(query, Bdd);
+				MySqlDataReader dataReader = cmd.ExecuteReader();
+				while (dataReader.Read())
+				{
+					bool concu = false;
+					if(dataReader["boConcu"].ToString() != "False")
+					{
+						concu = true;
+					}
+					this.listBornes.Add(new Bornes(0, Int32.Parse(dataReader["boNumSerie"].ToString()), Int32.Parse(dataReader["boPuissance"].ToString()), dataReader["boType"].ToString(), dataReader["boRef"].ToString(), float.Parse(dataReader["boLat"].ToString()), float.Parse(dataReader["boLong"].ToString()), concu));
+				}
+				dataReader.Close();
+				Bdd.Close();
+			}
+			catch (Exception expt)
+			{
+				this.listBornes = null;
+				MsgErr = expt.Message;
+			}
+			Bdd.Close();
+		}
+			
+				
 	}
 }
