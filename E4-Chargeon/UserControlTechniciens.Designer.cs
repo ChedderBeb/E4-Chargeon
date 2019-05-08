@@ -62,11 +62,10 @@
 			this.dtpValidHab = new System.Windows.Forms.DateTimePicker();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.cbHab = new System.Windows.Forms.ComboBox();
 			this.btnSupHabTech = new System.Windows.Forms.Button();
 			this.lvTechHab = new System.Windows.Forms.ListView();
 			this.idTechHab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.tech = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.hab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.habValid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.btnModifHabTech = new System.Windows.Forms.Button();
@@ -105,6 +104,7 @@
 			this.btnSupTech.TabIndex = 11;
 			this.btnSupTech.Text = "Supprimer";
 			this.btnSupTech.UseVisualStyleBackColor = true;
+			this.btnSupTech.Click += new System.EventHandler(this.btnSupTech_Click);
 			// 
 			// btnModifTech
 			// 
@@ -114,6 +114,7 @@
 			this.btnModifTech.TabIndex = 10;
 			this.btnModifTech.Text = "Modifier";
 			this.btnModifTech.UseVisualStyleBackColor = true;
+			this.btnModifTech.Click += new System.EventHandler(this.btnModifTech_Click);
 			// 
 			// btnAjoutTech
 			// 
@@ -254,6 +255,7 @@
 			this.btnSupHab.TabIndex = 17;
 			this.btnSupHab.Text = "Supprimer";
 			this.btnSupHab.UseVisualStyleBackColor = true;
+			this.btnSupHab.Click += new System.EventHandler(this.btnSupHab_Click);
 			// 
 			// label8
 			// 
@@ -277,6 +279,7 @@
 			this.lvHab.TabIndex = 2;
 			this.lvHab.UseCompatibleStateImageBehavior = false;
 			this.lvHab.View = System.Windows.Forms.View.Details;
+			this.lvHab.SelectedIndexChanged += new System.EventHandler(this.lvHab_SelectedIndexChanged);
 			// 
 			// idHab
 			// 
@@ -308,6 +311,7 @@
 			this.btnModifHab.TabIndex = 16;
 			this.btnModifHab.Text = "Modifier";
 			this.btnModifHab.UseVisualStyleBackColor = true;
+			this.btnModifHab.Click += new System.EventHandler(this.btnModifHab_Click);
 			// 
 			// tbDomHab
 			// 
@@ -324,6 +328,7 @@
 			this.btnAjoutHab.TabIndex = 15;
 			this.btnAjoutHab.Text = "Ajouter";
 			this.btnAjoutHab.UseVisualStyleBackColor = true;
+			this.btnAjoutHab.Click += new System.EventHandler(this.btnAjoutHab_Click);
 			// 
 			// tbNatHab
 			// 
@@ -337,17 +342,19 @@
 			this.gbTechHab.Controls.Add(this.dtpValidHab);
 			this.gbTechHab.Controls.Add(this.label7);
 			this.gbTechHab.Controls.Add(this.label6);
-			this.gbTechHab.Controls.Add(this.comboBox2);
+			this.gbTechHab.Controls.Add(this.cbHab);
 			this.gbTechHab.Controls.Add(this.btnSupHabTech);
 			this.gbTechHab.Controls.Add(this.lvTechHab);
 			this.gbTechHab.Controls.Add(this.btnModifHabTech);
 			this.gbTechHab.Controls.Add(this.btnAjoutHabTech);
+			this.gbTechHab.Enabled = false;
 			this.gbTechHab.Location = new System.Drawing.Point(379, 12);
 			this.gbTechHab.Name = "gbTechHab";
 			this.gbTechHab.Size = new System.Drawing.Size(310, 476);
 			this.gbTechHab.TabIndex = 23;
 			this.gbTechHab.TabStop = false;
-			this.gbTechHab.Text = "Habilitations des Techniciens";
+			this.gbTechHab.Text = "Habilitations du Technicien";
+			this.gbTechHab.Visible = false;
 			// 
 			// dtpValidHab
 			// 
@@ -374,13 +381,15 @@
 			this.label6.TabIndex = 18;
 			this.label6.Text = "Habilitation :";
 			// 
-			// comboBox2
+			// cbHab
 			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(117, 303);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(121, 21);
-			this.comboBox2.TabIndex = 16;
+			this.cbHab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbHab.FormattingEnabled = true;
+			this.cbHab.Location = new System.Drawing.Point(117, 303);
+			this.cbHab.Name = "cbHab";
+			this.cbHab.Size = new System.Drawing.Size(121, 21);
+			this.cbHab.TabIndex = 16;
+			this.cbHab.SelectedIndexChanged += new System.EventHandler(this.cbHab_SelectedIndexChanged);
 			// 
 			// btnSupHabTech
 			// 
@@ -390,12 +399,12 @@
 			this.btnSupHabTech.TabIndex = 14;
 			this.btnSupHabTech.Text = "Supprimer";
 			this.btnSupHabTech.UseVisualStyleBackColor = true;
+			this.btnSupHabTech.Click += new System.EventHandler(this.btnSupHabTech_Click);
 			// 
 			// lvTechHab
 			// 
 			this.lvTechHab.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idTechHab,
-            this.tech,
             this.hab,
             this.habValid});
 			this.lvTechHab.FullRowSelect = true;
@@ -405,16 +414,12 @@
 			this.lvTechHab.TabIndex = 1;
 			this.lvTechHab.UseCompatibleStateImageBehavior = false;
 			this.lvTechHab.View = System.Windows.Forms.View.Details;
+			this.lvTechHab.SelectedIndexChanged += new System.EventHandler(this.lvTechHab_SelectedIndexChanged);
 			// 
 			// idTechHab
 			// 
 			this.idTechHab.Text = "Id";
-			this.idTechHab.Width = 26;
-			// 
-			// tech
-			// 
-			this.tech.Text = "Technicien";
-			this.tech.Width = 83;
+			this.idTechHab.Width = 44;
 			// 
 			// hab
 			// 
@@ -424,7 +429,7 @@
 			// habValid
 			// 
 			this.habValid.Text = "Date d\'obtention";
-			this.habValid.Width = 109;
+			this.habValid.Width = 111;
 			// 
 			// btnModifHabTech
 			// 
@@ -434,6 +439,7 @@
 			this.btnModifHabTech.TabIndex = 13;
 			this.btnModifHabTech.Text = "Modifier";
 			this.btnModifHabTech.UseVisualStyleBackColor = true;
+			this.btnModifHabTech.Click += new System.EventHandler(this.btnModifHabTech_Click);
 			// 
 			// btnAjoutHabTech
 			// 
@@ -443,6 +449,7 @@
 			this.btnAjoutHabTech.TabIndex = 12;
 			this.btnAjoutHabTech.Text = "Ajouter";
 			this.btnAjoutHabTech.UseVisualStyleBackColor = true;
+			this.btnAjoutHabTech.Click += new System.EventHandler(this.btnAjoutHabTech_Click);
 			// 
 			// UserControlTechniciens
 			// 
@@ -480,7 +487,6 @@
 		private System.Windows.Forms.ColumnHeader habNat;
 		private System.Windows.Forms.ColumnHeader habDom;
 		private System.Windows.Forms.ColumnHeader idTechHab;
-		private System.Windows.Forms.ColumnHeader tech;
 		private System.Windows.Forms.ColumnHeader hab;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
@@ -503,7 +509,7 @@
 		private System.Windows.Forms.DateTimePicker dtpValidHab;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.ComboBox comboBox2;
+		private System.Windows.Forms.ComboBox cbHab;
 		private System.Windows.Forms.Button btnSupHabTech;
 		private System.Windows.Forms.ColumnHeader habValid;
 		private System.Windows.Forms.Button btnModifHabTech;

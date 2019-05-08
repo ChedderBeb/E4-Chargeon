@@ -8,15 +8,25 @@ namespace Chargeon
 {
 	class Assemblage
 	{
+		//Connexion à la base de données
 		private MySqlConnection bdd = new MySqlConnection("SERVER= 127.0.0.1; DATABASE= chargeon; UID=root; PASSWORD= ;");
+
+		//Permet d'accéder à la ligne ci-dessus
 		public MySqlConnection Bdd { get => bdd; }
 		string msgErr = "";
 		public string MsgErr { get => msgErr; set => msgErr = value; }
+
+		//Permet d'accéder à la liste technicien de le classe Technicien
 		internal List<Technicien> Technicien { get => technicien; set => technicien = value; }
 
+		//Permet d'accéder à la liste habilitation de la classe Habilitation
+		internal List<Habilitation> Habilitation { get => habilitation; set => habilitation = value; }
+
 		List<Technicien> technicien = new List<Technicien>();
-		Habilitation habilitation;
+		List<Habilitation> habilitation = new List<Habilitation>();
 		//Techniciens CRUD
+
+		//Remplit la liste technicien ci-dessus avec tous les techniciens récupérés dans la base de données
 		public void GetTechniciens()
 		{
 			technicien = new List<Technicien>();
@@ -40,13 +50,15 @@ namespace Chargeon
 			}
 			Bdd.Close();
 		}
+
+		//Insertion d'un technicien dans la base de données
 		public void InsertTechniciens(Technicien unTech)
 		{
 			Bdd.Open();
 			try
 			{
 
-				string query = "INSERT INTO technicien (techNom, techPrenom, techLong, techLat) VAlUES (" + unTech.Nom + ", " + unTech.Prenom + ", " + unTech.Longi + ", " + unTech.Lat + ")";
+				string query = "INSERT INTO technicien (techNom, techPrenom, techLong, techLat) VAlUES ('" + unTech.Nom + "', '" + unTech.Prenom + "', '" + unTech.Longi + "', '" + unTech.Lat + "')";
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();
@@ -59,12 +71,14 @@ namespace Chargeon
 			}
 			Bdd.Close();
 		}
-		public void UpdateTechniciens(Technicien unId, Technicien unNom, Technicien unPrenom, Technicien uneLong, Technicien uneLat)
+
+		//Modification d'un technicien dans la base de données
+		public void UpdateTechniciens(Technicien unTech)
 		{
 			Bdd.Open();
 			try
 			{
-				string query = "UPDATE technicien SET techNom = " + unNom + ", techPrenom = " + unPrenom + ", techLong = " + uneLong + ", techLat = " + uneLat + " WHERE techId = " + unId.Id;
+				string query = "UPDATE technicien SET techNom = '" + unTech.Nom + "', techPrenom = '" + unTech.Prenom + "', techLong = '" + unTech.Longi + "', techLat = '" + unTech.Lat + "' WHERE techId = " + unTech.Id;
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();
@@ -78,12 +92,14 @@ namespace Chargeon
 			}
 			Bdd.Close();
 		}
-		public void DeleteTechniciens(Technicien id)
+
+		//Suppression d'un technicien dans la base de données
+		public void DeleteTechniciens(int idTech)
 		{
 			Bdd.Open();
 			try
 			{
-				string query = "DELETE FROM technicien WHERE techId = " + id.Id;
+				string query = "DELETE FROM technicien WHERE techId = " + idTech;
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();
@@ -98,8 +114,11 @@ namespace Chargeon
 		}
 
 		//Habilitation CRUD
+
+		//Remplit la liste habilitation avec toutes les habilitations récupérées dans la base de données
 		public void SetHabilitations()
 		{
+			habilitation = new List<Habilitation>();
 			Bdd.Open();
 			try
 			{
@@ -108,7 +127,7 @@ namespace Chargeon
 				MySqlDataReader dataReader = cmd.ExecuteReader();
 				while (dataReader.Read())
 				{
-					this.habilitation = new Habilitation(Int32.Parse(dataReader["habId"].ToString()), dataReader["habNat"].ToString(), dataReader["habDomaine"].ToString());
+					this.habilitation.Add(new Habilitation(Int32.Parse(dataReader["habId"].ToString()), dataReader["habNat"].ToString(), dataReader["habDomaine"].ToString()));
 				}
 				dataReader.Close();
 				Bdd.Close();
@@ -121,12 +140,14 @@ namespace Chargeon
 			}
 			Bdd.Close();
 		}
-		public void InsertHabilitation(Habilitation uneNat, Habilitation unDom)
+
+		//Insertion d'une habilitation dans la base de données
+		public void InsertHabilitation(Habilitation uneHab)
 		{
 			Bdd.Open();
 			try
 			{
-				string query = "INSERT INTO habilitation (habNat, habDomaine, habValid) VALUES (" + uneNat + ", " + unDom + ")";
+				string query = "INSERT INTO habilitation (habNat, habDomaine) VALUES ('" + uneHab.Nature + "', '" + uneHab.Domaine + "')";
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();
@@ -138,11 +159,14 @@ namespace Chargeon
 			}
 			Bdd.Close();
 		}
-		public void UpdateHabilitations(Habilitation uneNat, Habilitation unDom)
+
+		//Modification d'une habilitation dans la base de données
+		public void UpdateHabilitations(Habilitation uneHab)
 		{
+			Bdd.Open();
 			try
 			{
-				string query = "UPDATE habilitation SET habNat = " + uneNat + ", habDomaine = " + unDom + " WHERE habId =" + habilitation.Id;
+				string query = "UPDATE habilitation SET habNat = '" + uneHab.Nature + "', habDomaine = '" + uneHab.Domaine + "' WHERE habId =" + uneHab.Id;
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();
@@ -155,12 +179,14 @@ namespace Chargeon
 			Bdd.Close();
 
 		}
-		public void DeleteHabilitation(Habilitation id)
+
+		//Suppression d'une habilitation dans la base de données
+		public void DeleteHabilitation(int idHab)
 		{
-			Bdd.Close();
+			Bdd.Open();
 			try
 			{
-				string query = "DELETE FROM habilitation WHERE habId = " + id.Id;
+				string query = "DELETE FROM habilitation WHERE habId = " + idHab;
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();
@@ -173,37 +199,41 @@ namespace Chargeon
 		}
 
 		//Habilitations des Techniciens CRUD
-		public void SetHabTech(Technicien idTech)
+
+		//Remplit la liste habilitation avec les habilitations récupérées dans la base de données
+		public List<Habilitation> SetHabTech(Technicien unTech)
 		{
+			habilitation = new List<Habilitation>();
 			Bdd.Open();
 			try
 			{
-				string query = "SELECT techNom, habId, obtenirHabValid FROM technicien INNER JOIN obtenir ON techId = obtenirTechId INNER JOIN habilitation ON obtenirHabId = habId WHERE techId = " + idTech.Id;
+				string query = "SELECT * FROM obtenir INNER JOIN habilitation ON obtenirHabId = habId WHERE obtenirTechId = " + unTech.Id;
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				MySqlDataReader dataReader = cmd.ExecuteReader();
 				while (dataReader.Read())
 				{
-					this.technicien.Add(new Technicien(0, dataReader["techNom"].ToString(), "", 0, 0));
-					this.habilitation = new Habilitation(Int32.Parse(dataReader["habId"].ToString()), "", "", DateTime.Parse("habValid"));
+					this.habilitation.Add(new Habilitation(Int32.Parse(dataReader["habId"].ToString()), dataReader["habNat"].ToString(), dataReader["habDomaine"].ToString(), dataReader.GetDateTime("obtenirHabValid")));
 				}
 				dataReader.Close();
 				Bdd.Close();
 			}
 			catch (Exception expt)
 			{
-				this.technicien = null;
 				this.habilitation = null;
 				MsgErr = expt.Message;
 			}
 			Bdd.Close();
+			return habilitation;
 		}
-		public void InsertHabTech(Technicien techId, Habilitation habId, Habilitation uneDateValid)
+
+		//Insertion d'une habilitation d'un technicien dans la base de données
+		public void InsertHabTech(Technicien unTech, Habilitation uneHab)
 		{
 			Bdd.Open();
 
 			try
 			{
-				string query = "INSERT INTO obtenir (obtenirHabId, obtenirHabValid) VALUES (" + habId.Id + ", " + uneDateValid + ") WHERE obtenirTechId = " + techId.Id;
+				string query = "INSERT INTO obtenir (obtenirHabId, obtenirHabValid, obtenirTechId) VALUES (" + uneHab.Id + ", '" + uneHab.Date.ToString("yyyy-MM-dd") + "', " + unTech.Id + ")";
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();
@@ -216,12 +246,14 @@ namespace Chargeon
 			Bdd.Close();
 
 		}
-		public void UpdateHabTech(Technicien techId, Habilitation habId, Habilitation uneDateValid)
+
+		//Modification d'une habilitation d'un technicien dans la base de données
+		public void UpdateHabTech(Technicien unTech, Habilitation uneHab)
 		{
 			Bdd.Open();
 			try
 			{
-				string query = "UPDATE obtenir SET obtenirTechId = " + techId.Id + ", obtenirHabId = " + habId.Id + ", obtenirHabValid = '" + uneDateValid + "' WHERE obtenirTechId = " + techId.Id;
+				string query = "UPDATE obtenir SET obtenirTechId = " + unTech.Id + ", obtenirHabId = " + uneHab.Id + ", obtenirHabValid = '" + uneHab.Date.ToString("yyyy-MM-dd") + "' WHERE obtenirTechId = " + unTech.Id;
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();
@@ -233,12 +265,14 @@ namespace Chargeon
 			}
 			Bdd.Close();
 		}
-		public void DeleteHabTech(Technicien techId)
+
+		//Suppression d'un habilitation d'un technicien dans la base de données
+		public void DeleteHabTech(Technicien unTech)
 		{
 			Bdd.Open();
 			try
 			{
-				string query = "DELETE FROM obtenir WHERE obtenirTechId = " + techId.Id;
+				string query = "DELETE FROM obtenir WHERE obtenirTechId = " + unTech.Id;
 				MySqlCommand cmd = new MySqlCommand(query, Bdd);
 				cmd.ExecuteNonQuery();
 				Bdd.Close();

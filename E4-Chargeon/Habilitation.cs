@@ -28,6 +28,9 @@ namespace Chargeon
 		}
 
 		public int Id { get => id; set => id = value; }
+		public string Nature { get => nature; set => nature = value; }
+		public string Domaine { get => domaine; set => domaine = value; }
+		public DateTime Date { get => date; set => date = value; }
 	}
 
 
